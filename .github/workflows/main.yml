@@ -1,16 +1,17 @@
-name: Deploy no Render
+name: My Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Render Deploy Action
-      uses: johnbeynon/render-deploy-action@v0.0.8
-      with:
-        service-id: srv-chv21064dad0lp980emg?key=paklt1rEURg
-        api-key: rnd_vYFIRsM4qiKOlpKt60I6se71OC0s
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: srv-chv21064dad0lp980emg?key=paklt1rEURg
+          api-key: rnd_vYFIRsM4qiKOlpKt60I6se71OC0s
